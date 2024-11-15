@@ -34,7 +34,7 @@ const RightComponent = () => {
                 <img src={kidsImg2} alt="" />
                 <img src={kidsImg3} alt="" />
             </div>
-            <Bg></Bg>
+            {/* <Bg></Bg> */}
         </div>
     );
 };

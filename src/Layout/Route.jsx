@@ -5,6 +5,9 @@ import Root from "./Root";
 import Home from "../Page/Home";
 import About from "../Page/About";
 import Career from "../Page/Career";
+import NewsDetails from "../Component/NewsDetails";
+import Login from "../Component/Login";
+import Register from "../Component/Register";
 
 export const router = createBrowserRouter([
     {
@@ -13,7 +16,8 @@ export const router = createBrowserRouter([
       children:[
         {
             path:"/",
-            element:<Home></Home>
+            element:<Home></Home>,
+            loader:()=>fetch('/news.json')
         },
         {
             path:"/about",
@@ -22,6 +26,19 @@ export const router = createBrowserRouter([
         {
             path:"/career",
             element:<Career></Career>
+        },
+        {
+          path:"/detail/:userId",
+          element:<NewsDetails></NewsDetails>,
+          loader:()=>fetch('/news.json')
+        },
+        {
+          path:"/login",
+          element:<Login></Login>
+        },
+        {
+          path:"/register",
+          element:<Register></Register>
         }
       ]
     },

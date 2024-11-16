@@ -4,7 +4,7 @@ import Navbar from '../SharedComponent/Navbar';
 import { AuthContext } from '../Layout/AuthProvider';
 
 const Login = () => {
-    const { userLogin}=useContext(AuthContext)
+    const { userLogin,setUser}=useContext(AuthContext)
     const handleLogin=(e)=>{
         e.preventDefault()
         const email =e.target.email.value
@@ -14,6 +14,7 @@ const Login = () => {
         // user login
         userLogin(email,password)
         .then(result=>{
+          setUser(result.user)
             console.log(result.user);
         })
         .catch(error=>{

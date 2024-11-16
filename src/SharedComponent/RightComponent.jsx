@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
@@ -8,16 +8,26 @@ import { FaInstagram } from "react-icons/fa";
 import kidsImg1 from '../assets/swimming.png'
 import kidsImg2 from '../assets/class.png'
 import kidsImg3 from '../assets/playground.png'
+import { AuthContext } from '../Layout/AuthProvider';
 
-import Bg from '../Component/Bg';
 
 const RightComponent = () => {
+    const { userGoogle}=useContext(AuthContext)
+    const handleGoogleLogin=()=>{
+        userGoogle()
+        .then(result=>{
+            console.log(result.user);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+    }
     return (
         <div>
             {/* login with */}
             <div className='p-2 '>
                 <p className='text-xl text-[#403F3F] font-semibold'>Login with</p>
-                <Link><button className="btn bg-white w-full my-4 mt-5"><FaGoogle />Login with Google</button></Link>
+                <Link><button onClick={handleGoogleLogin} className="btn bg-white w-full my-4 mt-5"><FaGoogle />Login with Google</button></Link>
                 <Link><button className="btn bg-white w-full"><IoLogoGithub />Login with Github</button></Link>
             </div>
             {/* Find Us On */}
@@ -34,7 +44,6 @@ const RightComponent = () => {
                 <img src={kidsImg2} alt="" />
                 <img src={kidsImg3} alt="" />
             </div>
-            {/* <Bg></Bg> */}
         </div>
     );
 };

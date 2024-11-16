@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const NewsCard = ({aNews}) => {
     const {name,img,published_date}=aNews.author
     const {title,image_url,_id ,details}=aNews
-    console.log(aNews);
     return (
         <div className="card bg-base-100  border rounded-md mt-6 ">
             {/* author */}

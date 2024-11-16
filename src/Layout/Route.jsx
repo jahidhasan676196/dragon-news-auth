@@ -8,6 +8,8 @@ import Career from "../Page/Career";
 import NewsDetails from "../Component/NewsDetails";
 import Login from "../Component/Login";
 import Register from "../Component/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+
 
 export const router = createBrowserRouter([
     {
@@ -29,7 +31,7 @@ export const router = createBrowserRouter([
         },
         {
           path:"/detail/:userId",
-          element:<NewsDetails></NewsDetails>,
+          element:<PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>,
           loader:()=>fetch('/news.json')
         },
         {
